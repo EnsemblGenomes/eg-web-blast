@@ -78,7 +78,10 @@ sub run {
 
   eval {
 
-      my $command = $self->command_bsub;
+      my $command = $self->command_command;
+
+      warn "\nCOMMAND:\n$command\n\n";
+
       $command = qq(echo '$command 2>/dev/null' | at now );
       $self->debug( "BLAST COMMAND: "  .$command."\n" );
       # Do the deed
@@ -87,6 +90,7 @@ sub run {
 	#  $self->dispatch_bsub( $command );
 
     }; if ($@){ 
+	warn "ERROR: $@";
 	$self->status('FAILED');
     }
 
@@ -168,7 +172,7 @@ sub command{
   
   #./wublast.pl --email keenan@ebi.ac.uk --database em_rel_hum -o txt -O
   #- --program blastn seq
-  my $program_dir  = $SiteDefs::ENSEMBL_SERVERROOT."/eg-plugins/common/utils";
+  my $program_dir  = $SiteDefs::ENSEMBL_SERVERROOT."/eg-web-common/utils";
   
   # nickl: this param required for new blast webservice
   # infer value from db name (but maybe there is a better way to get this?)
