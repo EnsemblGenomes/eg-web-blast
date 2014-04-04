@@ -78,7 +78,7 @@ sub run {
 
   eval {
 
-      my $command = $self->command_command;
+      my $command = $self->command;
 
       warn "\nCOMMAND:\n$command\n\n";
 
