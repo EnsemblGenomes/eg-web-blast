@@ -78,7 +78,7 @@ sub run {
 
   eval {
 
-      my $command = $self->command;
+      my $command = $self->command_bsub;
 
       warn "\nCOMMAND:\n$command\n\n";
 
@@ -258,7 +258,7 @@ sub run_blast{
 sub command_bsub{
   my $self = shift;
 #  my $program_name = "runblast.pl";
-  my $program_dir  = $SiteDefs::ENSEMBL_SERVERROOT."/utils";
+  my $program_dir  = $SiteDefs::ENSEMBL_WEBROOT."/utils";
   my $blastscript = $SiteDefs::ENSEMBL_BLASTSCRIPT;
   my $args         = $self->token;
 #  my $command      = "$blastscript $args";
